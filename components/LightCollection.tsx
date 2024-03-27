@@ -1,15 +1,15 @@
 "use client";
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { collectionItems } from "@/data/data";
 import { FcNext } from "react-icons/fc";
 import { FcPrevious } from "react-icons/fc";
-
-const CollectionCard: React.FC = () => {
+const LightCollection: React.FC = () => {
   const itemsPerPage = 3;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const totalItems = collectionItems.length;
 
+  // Function to go to the next slide
   const goToNextSlide = () => {
     const newIndex =
       currentIndex + itemsPerPage >= totalItems
@@ -18,6 +18,7 @@ const CollectionCard: React.FC = () => {
     setCurrentIndex(newIndex);
   };
 
+  // Function to go to the previous slide
   const goToPrevSlide = () => {
     const newIndex =
       currentIndex - itemsPerPage < 0
@@ -30,11 +31,13 @@ const CollectionCard: React.FC = () => {
     const intervalId = setInterval(goToNextSlide, 3000);
     return () => clearInterval(intervalId);
   }, [currentIndex]);
+
   return (
     <div
       className="container mx-auto mt-10 p-4 md:p-8 flex justify-center items-center flex-col"
       style={{
-        background: "linear-gradient(rgba(24, 40, 42, 1), rgba(34, 26, 44, 1))",
+        background:
+          "linear-gradient(rgba(249, 248, 255, 1), rgba(243, 249, 255, 1)",
       }}>
       <div className="text-3xl font-bold text-center mb-4 md:text-5xl">
         Collection Spotlight
@@ -60,15 +63,17 @@ const CollectionCard: React.FC = () => {
                     className={`carousel-item ${
                       index === 0 ? "active" : ""
                     } carousel-image flex collect`}>
-                    <div className="inner-card w-[226.1px] h-[700px] ml-28">
+                    <div
+                      className="inner-card w-[226.1px] h-[700px] ml-28   drop-shadow-[0_0px_4px_#d6dce9]"
+                      style={{ backgroundColor: "rgba(255, 255, 255, 1)" }}>
                       <div className="w-[226.1px] h-[401.25px]">
                         <img src={item.imageUrl} alt="" className="imgs" />
-                        <span className="start-circle mt-8 relative">srt</span>
+                        <span className="start-circle1 mt-8 relative">srt</span>
                         <span className="" style={{ color: "#818A97" }}>
                           ----------------------
                         </span>
 
-                        <span className="end-circle"> en </span>
+                        <span className="end-circle1"> en </span>
                       </div>
                       <div className="text-center mt-7">
                         <h1 className="font-medium text-[17px]">{item.name}</h1>
@@ -79,7 +84,7 @@ const CollectionCard: React.FC = () => {
                           {item.place}
                         </p>
                       </div>
-                      <div className="w-[213px] h-[36px] bg-black text-[12.73px] font-medium leading-4 p-[10px] text-center m-2">
+                      <div className="w-[213px] h-[36px] bg-black text-[12.73px] font-medium leading-4 p-[10px] text-center m-2 text-white">
                         <button>{item.action}</button>
                       </div>
                     </div>
@@ -88,19 +93,21 @@ const CollectionCard: React.FC = () => {
                       .slice(currentIndex + 1, currentIndex + itemsPerPage)
                       .map((item, index) => (
                         <div
-                        key={index}
                           className="inner-card w-[226.1px] h-[
-      624px] ml-12">
+    624px] ml-12 drop-shadow-[0_0px_4px_#d6dce9]" key={index}
+                          style={{ backgroundColor: "rgba(255, 255, 255, 1)" }}>
                           <div className="w-[226.1px] h-[401.25px]">
                             <img src={item.imageUrl} alt="" className="imgs" />
-                            <span className="start-circle mt-8 relative">
+                            <span
+                              className="start-circle1 mt-8 relative"
+                              >
                               srt
                             </span>
                             <span className="" style={{ color: "#818A97" }}>
                               ----------------------
                             </span>
 
-                            <span className="end-circle"> en </span>
+                            <span className="end-circle1"> en </span>
                           </div>
                           <div className="text-center mt-7">
                             <h1 className="font-medium text-[17px]">
@@ -113,7 +120,7 @@ const CollectionCard: React.FC = () => {
                               {item.place}
                             </p>
                           </div>
-                          <div className="w-[213px] h-[36px] bg-black text-[12.73px] font-medium leading-4 p-[10px] text-center m-2">
+                          <div className="w-[213px] h-[36px] bg-black text-[12.73px] font-medium leading-4 p-[10px] text-center m-2 text-white">
                             <button>{item.action}</button>
                           </div>
                         </div>
@@ -138,8 +145,8 @@ const CollectionCard: React.FC = () => {
               data-bs-slide="next"
               onClick={goToNextSlide}>
               {/* <span
-                className="carousel-control-next-icon  btns"
-                aria-hidden=""></span> */}
+              className="carousel-control-next-icon  btns"
+              aria-hidden=""></span> */}
               <span className="">
                 <FcNext className="icons" />
               </span>
@@ -151,5 +158,4 @@ const CollectionCard: React.FC = () => {
   );
 };
 
-export default CollectionCard;
-
+export default LightCollection;
